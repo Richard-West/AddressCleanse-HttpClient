@@ -44,15 +44,7 @@ namespace AddressCleanse_HttpClient
 
                     AddressCleanseGeoCodeResponse address = await response.Content.ReadAsAsync<AddressCleanseGeoCodeResponse>();
 
-                    Console.WriteLine("Primary Address:   {0}", address.PrimaryAddress);
-                    Console.WriteLine("Secondary Address: {0}", address.SecondaryAddress);
-                    Console.WriteLine("ZIP Code:          {0}", address.Zip10);
-                    Console.WriteLine("Latitude:          {0}", address.Latitude);
-                    Console.WriteLine("Longitude:         {0}", address.Longitude);
-                    Console.WriteLine("Geo Assignment:    {0}", address.AssignmentLevel);
-                    Console.WriteLine("Status:            {0}", address.StatusMessage);
-                    Console.WriteLine("\n\nPress any key to continue...");
-                    Console.ReadKey();
+                    DisplayCleansedData(address);
                 }
                 catch (HttpRequestException e)
                 {
@@ -63,6 +55,23 @@ namespace AddressCleanse_HttpClient
                 }
 
             }
+        }
+
+        private static void DisplayCleansedData(AddressCleanseGeoCodeResponse address)
+        {
+            Console.WriteLine("Primary Address:   {0}", address.PrimaryAddress);
+            Console.WriteLine("Secondary Address: {0}", address.SecondaryAddress);
+            Console.WriteLine("City - Long:       {0}", address.City);
+            Console.WriteLine("City - Short:      {0}", address.City13);
+            Console.WriteLine("State:             {0}", address.State);
+            Console.WriteLine("ZIP Code:          {0}", address.Zip10);
+            Console.WriteLine("DPV Status:        {0}", address.DpvStatus);
+            Console.WriteLine("Latitude:          {0}", address.Latitude);
+            Console.WriteLine("Longitude:         {0}", address.Longitude);
+            Console.WriteLine("Geo Assignment:    {0}", address.AssignmentLevel);
+            Console.WriteLine("Status:            {0}", address.StatusMessage);
+            Console.WriteLine("\n\nPress any key to continue...");
+            Console.ReadKey();
         }
     }
 
