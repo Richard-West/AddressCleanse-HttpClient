@@ -20,7 +20,6 @@ namespace AddressCleanse_HttpClient
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://rapid.peachtreedata.com/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
